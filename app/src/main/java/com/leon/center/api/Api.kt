@@ -6,6 +6,6 @@ import retrofit2.http.*
 
 
 interface Api {
-    @POST("")
-    suspend fun getLabel(): Result<List<LabelResponse>>
+    @GET("abc/dags")
+    suspend fun getLabel(): Result<List<String>>
 }

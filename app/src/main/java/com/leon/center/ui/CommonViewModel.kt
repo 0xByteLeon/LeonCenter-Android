@@ -9,20 +9,13 @@ import com.leon.common.base.BaseViewModel
 import org.jetbrains.anko.toast
 
 class CommonViewModel(application: Application) : BaseViewModel(application) {
-    private val _getLabel = MutableLiveData<String>()
+    private val _cityName = MutableLiveData<String>()
     private val repository = CommonRepository(viewModelScope)
-    val labelTypeResponse = Transformations.switchMap(_getLabel) {
-        repository.getLabel()
+    val cityWeatherForecastData = Transformations.switchMap(_cityName) {
+        repository.getWeatherForecast(it)
     }
-
-    val test = Transformations.switchMap(_getLabel) {
-        application.toast(it)
-        liveData<String>()
-    }
-
-
-    fun getLabel() {
-        _getLabel.value = "test trigger"
+    fun getCityWeatherForecast(cityName: String) {
+        _cityName.value = cityName
     }
 
 }
