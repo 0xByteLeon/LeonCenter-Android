@@ -11,14 +11,11 @@ abstract class BaseVMFragment<VM : BaseViewModel>(private var modelClass: Class<
         getViewModelByActivity(modelClass, getViewModelFactory())
     }
 
-    protected open fun getViewModelFactory(): ViewModelProvider.Factory? {
-        return null
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindModel()
     }
 
-    protected abstract fun bindModel()
+
 }

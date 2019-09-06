@@ -4,15 +4,16 @@ import androidx.lifecycle.LiveData
 import com.leon.center.api.RollToolsApi
 import com.leon.center.vo.Result
 import com.leon.center.vo.WeatherForecast
-import com.leon.common.datasource.NetworkDataSource
+import com.leon.common.datasource.CoroutineDataResource
 import com.leon.common.api.Resource
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 class CommonRepository(coroutineScope: CoroutineScope) : AbsRepository(coroutineScope) {
     private val rollToolsApi = RollToolsApi.getApi()
 
     fun getWeatherForecast(cityName: String): LiveData<Resource<WeatherForecast>> {
-        return object : NetworkDataSource<Result<WeatherForecast>, WeatherForecast>(coroutineScope) {
+        return object : CoroutineDataResource<Result<WeatherForecast>, WeatherForecast>(coroutineScope) {
             //需要保存网络请求结果至本地时可以在这里执行，此方法在异步协程中调用，createCall()
             override fun saveCallResult(item: Result<WeatherForecast>) {
 
@@ -46,7 +47,7 @@ class CommonRepository(coroutineScope: CoroutineScope) : AbsRepository(coroutine
             rollToolsApi.getWeatherForecast(cityName)
         }
 //
-//        return object : NetworkDataSource<Result<WeatherForecast>, WeatherForecast>(coroutineScope) {
+//        return object : CoroutineDataResource<Result<WeatherForecast>, WeatherForecast>(coroutineScope) {
 //            override fun saveCallResult(item: Result<WeatherForecast>) {
 //            }
 //

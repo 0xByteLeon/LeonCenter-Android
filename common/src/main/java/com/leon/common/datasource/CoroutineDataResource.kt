@@ -15,8 +15,8 @@ import kotlinx.coroutines.*
  * @param ResultType 处理后数据
  * @property coroutineScope 启动携程请求失败等方法会在此协程调用
  */
-abstract class NetworkDataSource<ResponseType, ResultType> @MainThread constructor(private val coroutineScope: CoroutineScope = GlobalScope) :
-    DataSource<ResultType>() {
+abstract class CoroutineDataResource<ResponseType, ResultType> @MainThread constructor(private val coroutineScope: CoroutineScope = GlobalScope) :
+    DataResource<ResultType>() {
 
     /**
      * 数据源被创建时就开始执行数据加载流程
@@ -52,14 +52,14 @@ abstract class NetworkDataSource<ResponseType, ResultType> @MainThread construct
                     saveCallResult(response)
                     postValue(Resource.success(result))
                 } catch (e: Exception) {
-                    if (BuildConfig.DEBUG) {
-                        e.printStackTrace()
-                        postValue(Resource.error(e.message ?: "获取数据失败", null))
-                    } else {
-                        postValue(Resource.error("获取数据失败", null))
-                    }
                     supervisorScope {
                         onFetchFailed()
+                    }
+                    if (BuildConfig.DEBUG) {
+                        e.printStackTrace()
+                        postValue(Resource.error(e, null))
+                    } else {
+                        postValue(Resource.error("获取数据失败", null))
                     }
                 }
             }

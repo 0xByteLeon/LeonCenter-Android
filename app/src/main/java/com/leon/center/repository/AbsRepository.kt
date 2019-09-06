@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.leon.center.vo.Result
 import com.leon.common.api.Resource
 import com.leon.common.base.BaseRepository
-import com.leon.common.datasource.NetworkDataSource
+import com.leon.common.datasource.CoroutineDataResource
 import kotlinx.coroutines.CoroutineScope
 
 /**
@@ -15,10 +15,10 @@ import kotlinx.coroutines.CoroutineScope
 abstract class AbsRepository(val coroutineScope: CoroutineScope) : BaseRepository() {
 
     /**
-     * 对于不需要本地缓存的数据直接调用此方法生成 NetworkDataSource
+     * 对于不需要本地缓存的数据直接调用此方法生成 CoroutineDataResource
      * */
     inline fun <reified T> generateNetSource(crossinline block: suspend CoroutineScope.() -> Result<T>): LiveData<Resource<T>> {
-        return object : NetworkDataSource<Result<T>, T>(coroutineScope) {
+        return object : CoroutineDataResource<Result<T>, T>(coroutineScope) {
             override fun saveCallResult(item: Result<T>) {
 
             }

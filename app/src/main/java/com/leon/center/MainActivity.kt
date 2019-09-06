@@ -1,20 +1,35 @@
 package com.leon.center
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.leon.center.ui.CommonViewModel
 import com.leon.center.vo.Forecast
 import com.leon.common.api.Resource
 import com.leon.common.api.Status
-import com.leon.common.base.BaseVMActivity
+import com.leon.common.base.BaseActivity
 import com.leon.common.extensions.*
+import com.leon.module_router.BusEvent
+import com.leon.module_router.RouterNavigationUtils
+import com.leon.module_router.RouterUrls
+import com.zyyoona7.itemdecoration.RecyclerViewDivider
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.delay
+import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class MainActivity : BaseVMActivity<CommonViewModel>(CommonViewModel::class.java) {
+@Route(path = RouterUrls.MAIN_HOME)
+class MainActivity : BaseActivity() {
+
+    val viewModel by lazy {
+        createVM<CommonViewModel>()
+    }
+
 
     override val layoutId: Int = R.layout.activity_main
 
@@ -29,6 +44,17 @@ class MainActivity : BaseVMActivity<CommonViewModel>(CommonViewModel::class.java
     }
 
     override fun initView(savedInstanceState: Bundle?) {
+        listAdapter.setOnItemClickListener { adapter, view, position ->
+            when(position){
+                0 -> {
+                    RouterNavigationUtils.goModuleAMain()
+                }
+                1 -> {}
+                2 -> {}
+                3 -> {}
+            }
+        }
+        recyclerView.addItemDecoration(RecyclerViewDivider.linear().color(Color.GRAY).dividerSize(8).build())
         recyclerView.adapter = listAdapter
         recyclerView.onRetry(Runnable {
             getWeather()
@@ -36,6 +62,13 @@ class MainActivity : BaseVMActivity<CommonViewModel>(CommonViewModel::class.java
 
         refresh.onClick {
             getWeather()
+        }
+
+        doAsync {
+            repeat(1000) {
+                Thread.sleep(1000)
+                LiveEventBus.get(BusEvent.MAIN_COUNT).post(it)
+            }
         }
     }
 

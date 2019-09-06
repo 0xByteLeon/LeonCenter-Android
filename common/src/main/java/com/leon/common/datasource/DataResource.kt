@@ -11,7 +11,7 @@ import com.leon.common.api.Resource
  * @author:Leon
  * @description:数据源抽象，构造LiveData数据源，使用 MediatorLiveData 监听单个或多个数据源数据变动
  */
-abstract class DataSource<ResultType> {
+abstract class DataResource<ResultType> {
     protected val result: MediatorLiveData<Resource<ResultType>> = MediatorLiveData()
     @MainThread
     protected fun setValue(newValue: Resource<ResultType>) {

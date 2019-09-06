@@ -10,10 +10,19 @@ package com.leon.common.api
  * @property data 数据
  * @property message 错误信息等
 */
-data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
+data class Resource<T>(val status: Status, val data: T?, val message: String?) {
+    var exception: Exception? = null
     companion object {
+        var defaultErrorMsg = "获取数据失败"
+
         fun <T> success(data: T?): Resource<T> {
             return Resource(Status.SUCCESS, data, null)
+        }
+
+        fun <T> error(exception: Exception, data: T?): Resource<T> {
+            return Resource(Status.ERROR, data, exception.message ?: defaultErrorMsg).apply {
+                this.exception = exception
+            }
         }
 
         fun <T> error(msg: String, data: T?): Resource<T> {
@@ -23,5 +32,19 @@ data class Resource<out T>(val status: Status, val data: T?, val message: String
         fun <T> loading(data: T?): Resource<T> {
             return Resource(Status.LOADING, data, null)
         }
+    }
+
+    fun onSucceed(onSucceed: (T?) -> Unit):Resource<T>{
+        onSucceed(data)
+        return this
+    }
+    fun onError(onError: (T?) -> Unit):Resource<T>{
+        onError(data)
+        return this
+    }
+
+    fun onLoading(onLoading: (T?) -> Unit):Resource<T>{
+        onLoading(data)
+        return this
     }
 }
