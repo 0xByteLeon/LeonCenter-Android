@@ -19,9 +19,9 @@ import com.leon.module_router.RouterNavigationUtils
 import com.leon.module_router.RouterUrls
 import com.zyyoona7.itemdecoration.RecyclerViewDivider
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.delay
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.uiThread
 
 @Route(path = RouterUrls.MAIN_HOME)
 class MainActivity : BaseActivity() {
@@ -45,13 +45,16 @@ class MainActivity : BaseActivity() {
 
     override fun initView(savedInstanceState: Bundle?) {
         listAdapter.setOnItemClickListener { adapter, view, position ->
-            when(position){
+            when (position) {
                 0 -> {
                     RouterNavigationUtils.goModuleAMain()
                 }
-                1 -> {}
-                2 -> {}
-                3 -> {}
+                1 -> {
+                }
+                2 -> {
+                }
+                3 -> {
+                }
             }
         }
         recyclerView.addItemDecoration(RecyclerViewDivider.linear().color(Color.GRAY).dividerSize(8).build())
@@ -64,10 +67,17 @@ class MainActivity : BaseActivity() {
             getWeather()
         }
 
+        timeCount.onClick {
+            RouterNavigationUtils.goModuleAMain()
+        }
+
         doAsync {
-            repeat(1000) {
+            repeat(1000) { count ->
                 Thread.sleep(1000)
-                LiveEventBus.get(BusEvent.MAIN_COUNT).post(it)
+                LiveEventBus.get(BusEvent.MAIN_COUNT).post(count)
+                uiThread {
+                    timeCount.text = "点击跳转ModuleA\n计数器：$count"
+                }
             }
         }
     }

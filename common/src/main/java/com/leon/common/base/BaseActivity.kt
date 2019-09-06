@@ -23,9 +23,9 @@ abstract class BaseActivity : AppCompatActivity() {
         bindModel()
     }
 
-    protected fun setStatusBar(){
+    protected open fun setStatusBar(){
         StatusBarUtil.setTransparent(this)
-        StatusBarUtil.setDarkMode(this)
+        StatusBarUtil.setLightMode(this)
     }
 
     protected abstract fun initData(savedInstanceState: Bundle?)
