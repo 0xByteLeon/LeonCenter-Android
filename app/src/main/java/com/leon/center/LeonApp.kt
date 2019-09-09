@@ -7,5 +7,10 @@ class LeonApp: BaseApp() {
     override fun onCreate() {
         super.onCreate()
         Gloading.initDefault(GlobalAdapter())
+        app = this
+    }
+
+    companion object{
+        lateinit var app: LeonApp
     }
 }

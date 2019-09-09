@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 apply from: "../config_build.gradle"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
@@ -7,10 +9,10 @@ android {
         applicationId "com.leon.center"
     }
 
-    flavorDimensions  "verison"
+    flavorDimensions "verison"
     productFlavors {
         //打包assembleVersionDevDebug
-        versionDev{
+        versionDev {
             dimension "verison"
         }
         //gradlew clean assembleVersionTestDebug
@@ -18,7 +20,7 @@ android {
             dimension "verison"
         }
         // gradlew clean assembleVersionOnlineRelease
-        versionOnline{
+        versionOnline {
             dimension "verison"
         }
     }
@@ -41,5 +43,5 @@ dependencies {
     implementation rootProject.ext.dependencies["brvah"]
     implementation project(path: ':common')
     implementation project(path: ':module_a')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
-

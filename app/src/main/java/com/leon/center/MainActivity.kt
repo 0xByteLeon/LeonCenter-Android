@@ -4,7 +4,10 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.lifecycle.coroutineScope
+import androidx.lifecycle.whenCreated
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.apkfuns.logutils.LogUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.jeremyliao.liveeventbus.LiveEventBus
@@ -19,6 +22,8 @@ import com.leon.module_router.RouterNavigationUtils
 import com.leon.module_router.RouterUrls
 import com.zyyoona7.itemdecoration.RecyclerViewDivider
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.uiThread
@@ -71,15 +76,24 @@ class MainActivity : BaseActivity() {
             RouterNavigationUtils.goModuleAMain()
         }
 
-        doAsync {
+        lifecycle.coroutineScope.launch {
+            delay(10000)
             repeat(1000) { count ->
-                Thread.sleep(1000)
+                delay(1000)
                 LiveEventBus.get(BusEvent.MAIN_COUNT).post(count)
-                uiThread {
-                    timeCount.text = "点击跳转ModuleA\n计数器：$count"
-                }
+                timeCount.text = "点击跳转ModuleA\n计数器：$count"
+                LogUtils.d(count)
             }
         }
+//        doAsync {
+//            repeat(1000) { count ->
+//                Thread.sleep(1000)
+//                LiveEventBus.get(BusEvent.MAIN_COUNT).post(count)
+//                uiThread {
+//                    timeCount.text = "点击跳转ModuleA\n计数器：$count"
+//                }
+//            }
+//        }
     }
 
     fun getWeather() {

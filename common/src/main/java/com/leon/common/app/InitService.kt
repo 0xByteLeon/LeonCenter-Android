@@ -35,6 +35,7 @@ class InitService : IntentService("InitService") {
             .supportBroadcast(this)
             .lifecycleObserverAlwaysActive(true)
             .autoClear(false)
+        LiveEventBus.get("app_init_completed").post(System.currentTimeMillis())
     }
 
     companion object {

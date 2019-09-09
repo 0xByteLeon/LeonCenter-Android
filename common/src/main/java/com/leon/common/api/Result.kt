@@ -1,4 +1,4 @@
-package com.leon.center.vo
+package com.leon.common.api
 
 class Result<T>(
     var code: Int,

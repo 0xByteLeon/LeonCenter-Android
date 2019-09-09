@@ -2,12 +2,11 @@ package com.leon.center.repository
 
 import androidx.lifecycle.LiveData
 import com.leon.center.api.RollToolsApi
-import com.leon.center.vo.Result
 import com.leon.center.vo.WeatherForecast
 import com.leon.common.datasource.CoroutineDataResource
 import com.leon.common.api.Resource
+import com.leon.common.api.Result
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 class CommonRepository(coroutineScope: CoroutineScope) : AbsRepository(coroutineScope) {
     private val rollToolsApi = RollToolsApi.getApi()

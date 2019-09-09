@@ -1,10 +1,10 @@
 package com.leon.center.repository
 
 import androidx.lifecycle.LiveData
-import com.leon.center.vo.Result
 import com.leon.common.api.Resource
 import com.leon.common.base.BaseRepository
 import com.leon.common.datasource.CoroutineDataResource
+import com.leon.common.api.Result
 import kotlinx.coroutines.CoroutineScope
 
 /**

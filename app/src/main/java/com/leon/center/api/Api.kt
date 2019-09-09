@@ -1,8 +1,7 @@
 package com.leon.center.api
 
-import com.leon.center.vo.LabelResponse
-import com.leon.center.vo.Result
 import retrofit2.http.*
+import com.leon.common.api.Result
 
 
 interface Api {

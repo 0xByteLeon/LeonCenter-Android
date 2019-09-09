@@ -7,4 +7,5 @@ package com.leon.module_router
  */
 object BusEvent {
     const val MAIN_COUNT = "main_send_count"
+    const val APP_INIT_COMPLETED = "app_init_completed"
 }

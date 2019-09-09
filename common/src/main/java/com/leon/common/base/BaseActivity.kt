@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.alibaba.android.arouter.launcher.ARouter
 import com.leon.common.utils.StatusBarUtil
 import com.noober.background.BackgroundLibrary
 
@@ -16,6 +17,7 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
+        ARouter.getInstance().inject(this)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setStatusBar()
         initView(savedInstanceState)

@@ -44,6 +44,8 @@ dependencies {
     api rootProject.ext.dependencies["anko"]
     api rootProject.ext.dependencies["core-ktx"]
     api rootProject.ext.dependencies["lifecycle-viewmodel-ktx"]
+    api rootProject.ext.dependencies["lifecycle-runtime-ktx"]
+    api rootProject.ext.dependencies["lifecycle-livedata-ktx"]
     api rootProject.ext.dependencies["lifecycle-extensions"]
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["multidex"]
