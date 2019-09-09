@@ -6,7 +6,6 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.leon.center.repository.CommonRepository
 import com.leon.common.base.BaseViewModel
-import org.jetbrains.anko.toast
 
 class CommonViewModel(application: Application) : BaseViewModel(application) {
     private val _cityName = MutableLiveData<String>()

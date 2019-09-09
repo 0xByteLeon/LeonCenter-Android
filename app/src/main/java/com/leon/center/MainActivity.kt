@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.coroutineScope
-import androidx.lifecycle.whenCreated
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -22,11 +21,11 @@ import com.leon.module_router.RouterNavigationUtils
 import com.leon.module_router.RouterUrls
 import com.zyyoona7.itemdecoration.RecyclerViewDivider
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.doAsync
+import kotlinx.coroutines.withContext
 import org.jetbrains.anko.sdk27.coroutines.onClick
-import org.jetbrains.anko.uiThread
 
 @Route(path = RouterUrls.MAIN_HOME)
 class MainActivity : BaseActivity() {
@@ -98,7 +97,6 @@ class MainActivity : BaseActivity() {
 
     fun getWeather() {
         viewModel.getCityWeatherForecast("杭州市")
-
     }
 
     override fun bindModel() {
