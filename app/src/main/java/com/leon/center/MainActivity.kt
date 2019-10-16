@@ -6,7 +6,6 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.coroutineScope
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.apkfuns.logutils.LogUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.jeremyliao.liveeventbus.LiveEventBus
@@ -21,10 +20,8 @@ import com.leon.module_router.RouterNavigationUtils
 import com.leon.module_router.RouterUrls
 import com.zyyoona7.itemdecoration.RecyclerViewDivider
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 @Route(path = RouterUrls.MAIN_HOME)
@@ -81,7 +78,6 @@ class MainActivity : BaseActivity() {
                 delay(1000)
                 LiveEventBus.get(BusEvent.MAIN_COUNT).post(count)
                 timeCount.text = "点击跳转ModuleA\n计数器：$count"
-                LogUtils.d(count)
             }
         }
 //        doAsync {
@@ -95,6 +91,7 @@ class MainActivity : BaseActivity() {
 //        }
     }
 
+    
     fun getWeather() {
         viewModel.getCityWeatherForecast("杭州市")
     }

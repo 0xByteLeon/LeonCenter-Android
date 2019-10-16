@@ -72,6 +72,10 @@ android {
     }
 
 
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     //生成libs目录
     sourceSets {
         main.jniLibs.srcDirs = ['libs']

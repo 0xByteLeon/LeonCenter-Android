@@ -34,6 +34,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected abstract fun initView(savedInstanceState: Bundle?)
 
+//    inline fun < reified T : ViewModel> createVM(): T = ViewModelProviders.of(this, getViewModelFactory()).get(T::class.java)
     inline fun < reified T : ViewModel> createVM(): T = ViewModelProviders.of(this, getViewModelFactory()).get(T::class.java)
 
     protected open fun getViewModelFactory(): ViewModelProvider.Factory? {

@@ -15,10 +15,8 @@ object AppManager {
     //App是否在前台
     var isFront = false
     private var isInit = false
-    var activityStack: Stack<Activity> = Stack()
-        private set
-    var fragmentStack: Stack<Fragment> = Stack()
-        private set
+    val activityStack: Stack<Activity> = Stack()
+    val fragmentStack: Stack<Fragment> = Stack()
 
     fun init(application: Application) {
         if (!isInit) {
