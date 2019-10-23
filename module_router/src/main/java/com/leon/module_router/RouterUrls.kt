@@ -9,4 +9,6 @@ object RouterUrls {
     const val MAIN_HOME = "/main/home"
     const val MODULE_A_MAIN = "/module_a/main"
     const val MODULE_A_INJECT = "/module_a/inject"
+    const val MODULE_CIPHER_MAIN = "/module_cipher/main"
+    const val MODULE_CIPHER_RSA = "/module_cipher/rsa"
 }

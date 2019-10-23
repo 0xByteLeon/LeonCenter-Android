@@ -22,4 +22,11 @@ object RouterNavigationUtils {
         ARouter.getInstance().build(RouterUrls.MAIN_HOME).navigation()
     }
 
+    fun goChiper(){
+        ARouter.getInstance().build(RouterUrls.MODULE_CIPHER_MAIN)
+    }
+
+    fun goRSACipher(){
+        ARouter.getInstance().build(RouterUrls.MODULE_CIPHER_RSA).navigation()
+    }
 }

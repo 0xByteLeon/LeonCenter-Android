@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RSACipherActivity">
+
+    <LinearLayout
+        android:id="@+id/keyLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="公钥：" />
+
+            <EditText
+                android:id="@+id/etPublicKey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoNO6goMP8OWp6Z31an3iJ1FrsV8TI3msrtW5WvGoNF6KeGbZvXEXKEFpC7iZKAS0KU9VPI5xi9XNtTzQqzqbAAW3l8lNMhUMhPIq2G3phg3Jl7f4MUb9qzbIw0h/feJOaFHfq+2z7zKGC/z6pjSzWsSRVaMOEottQ/ukRms7RLQ7DwycovbYnM3JA/UGeoC8tbR31Vvh6ZtG1zOPm7ZpxQ7yPCQB8qqCw4pYl1lRvyfPJXXHIxsFP8itgW3AHJulH/9e/6E0E6G1tYrKNyBjLYgcgqWLM70WMfFQBRPvRYEnljxLvaaXCICDD+5ssS2Os3gcYqai5tpOCLcmrHZ9nwIDAQAB"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="私钥：" />
+
+            <EditText
+                android:id="@+id/etPrivateKey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCg07qCgw/w5anpnfVqfeInUWuxXxMjeayu1bla8ag0Xop4Ztm9cRcoQWkLuJkoBLQpT1U8jnGL1c21PNCrOpsABbeXyU0yFQyE8irYbemGDcmXt/gxRv2rNsjDSH994k5oUd+r7bPvMoYL/PqmNLNaxJFVow4Si21D+6RGaztEtDsPDJyi9ticzckD9QZ6gLy1tHfVW+Hpm0bXM4+btmnFDvI8JAHyqoLDiliXWVG/J88ldccjGwU/yK2BbcAcm6Uf/17/oTQTobW1iso3IGMtiByCpYszvRYx8VAFE+9FgSeWPEu9ppcIgIMP7myxLY6zeBxipqLm2k4Ityasdn2fAgMBAAECggEAGRv1apr7yiiRNqAqyM2OmYTkw3SMkGVWyJUls0U3dbWs+M9V/3XAn9BWjjXr84uIdUqljCbRI3vl+f3ctl8YBBDgcRpEqyUOJ1OHzPKcGwncB4v5e/gRcsHC5npTLVw/0Zm2yij6hsXkl8qPd5OSzQETj8M9Vzfdf1eydiwXvMoGqrh0bMzfOs8vaDGdgQuz29W3HsLtdQ47fRQg8qgZ61ERIBctHLZQWgEulLZw6+p3GRRaqN1qSxVZZzsaua+RbwsBK85vbFk6TlJyosX8J9w09dHVLLUUyj92uAUficRGwlC7twkWdy/I3asjQ6iSe104HRufgAY0+YnAGcBxAQKBgQDtWkr9ADCBwLjl4rIHZKet88+2qB7VqUajhmiH32ZCdzp/2CG2ClOfy9fgpqXnztWePfO5wYP7vr8Zb/lyvRoamTAuKf59uO3MZ0ZA3mKRkXWMa9r3ijGEwSqt4bEeM3/BFB9+91rnYXT1ydZxpkp5PvfGXcHwmxIFruW3DPhMkQKBgQCtdlRcDTm6i6iME9Nd5JRIA4FnMcpz7sZQKvkdlUGgtqMY5E05mJdpEHpo+y74MOMHYh4UqAsMfnG/YzSag3oOqiA/rQOB1/wAVcE1wDTwSZlY/s2BFZK8fa39bCWUc2LdCTsSoowy8r99ua8TSqQUwZGpoFJEUaTuFjJ4itz/LwKBgQDPW63doFfAU8V1GPrdmKMhRrq14eSmVy+eVyNlaNdmw9D4tbKl3hm2phhgbFbO0JUxnQAbzaNnwPok1/1+rxRqHmDIQ+nQnkop5COtMlu8vu6KEgQHdNTUHQoTRPQ+5VD8Nn9ZpfHl6O+Md5wAR/4SNN+0jl6LvH4fNu/7Xrph8QKBgD2UfopXX6EsJ1/jQexZU5LlO7FI6diScfDP8LRh4nSNogUaN5g05bu0z+ApHBmcMVzTpl4q8hEzampJa8lW16QRHXW9lDsqVBpCV18fpyuO1VPU0Vv8LqWf8H7BP+4dsIFL357T+fW0W+rkWpT8sJd1yKJxegMrAORNGQnWMnKdAoGAPL4tCrrbQc3Wpmw7MpJTTvGfxa8g0DY3x6zDdNIO+cS++FXLREClCvVfD7QykZQguEmKpv9MePn2c3rLHuYOgaZRgZXcNo5US+LD+0u1OfMH9uiUBeYLMFFEd2d+9EDa+v6pwWmgewLi7fVhe36+JQwBO9EdFr0rp2WldejKgSM="
+                android:singleLine="true"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/logSv"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/keyLL" >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/chooseFileBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="选择文件"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/keyLL" />
+
+            <EditText
+                android:id="@+id/etRsaTest"
+                android:hint="加密内容"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEncryptTest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RSA私钥加密测试"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/keyLL" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEnByRsaPrivate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RSA私钥文件加密"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chooseFileBtn" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signByRsaPrivate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RSA私钥文件签名"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnDeByRsaPrivate" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDeByRsaPublic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RSA公钥文件解密"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnDeByRsaPrivate" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEnByRsaPublic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RSA公钥文件加密"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnDeByRsaPrivate" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDeByRsaPrivate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RSA私钥文件解密"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnEnByRsaPrivate" />
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/verifyByRsa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RSA文件签名验证"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/signByRsaPrivate" />
+
+
+            <LinearLayout
+                android:id="@+id/aesKeyLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/verifyByRsa">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AES密钥RSA加密后密文：" />
+
+                    <EditText
+                        android:id="@+id/etAesEncryptByRsaKey"
+                        android:layout_width="0dp"
+                        android:singleLine="true"
+                        android:text="VfjA1hgWglwwEZqfFY62OswiijZ2n4wcwrAdfqk6//mHBMROB3xNvr0oB24Ex8QA2LPK0r5WPLpAJUwwAe2EhoTDZp0W7IJpVuvAOW5g9LeE+p6qzqCbLjHSHOOt8ADdml31KJyXKH5tfzoHNOfqfJ/PvuaVR9RYcIv5FGeT42mZ7aKUUFmoIjGzlc+iYNKFEXhwR4L3+E3FFAnZIHycnD+59CssTublViB+OyQJ1fXyHgP/lsF2+jhcR+H5sMbk7w1YEK1YTZvapN2Da086cPrdwsrZQHjIqHB338kTL8hUVhKKdQEQfrNReX5EnLZDuavCknClCkxKvEYgYnKTHg=="
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AES密钥向量密文：" />
+
+                    <EditText
+                        android:id="@+id/etAesKeyIvEncryptByRsa"
+                        android:layout_width="0dp"
+                        android:singleLine="true"
+                        android:text="cfN1QUM/nutemm1hUeb2ofsnOorZol4ziBmOQb8OqqBZiAayU6FFA7Xf7FoGeNlZtHepZiLK/Y4eQdllVpy+2qgDyLdgZ6BkpTxodLmSKa2PA/zCqUxQ36zu8MRhHItUDAdrQW8/dfpPwdpTlqxlsCqZWExzYH7s2U2TtsVKzc/A2xRgJZT2hzJ28nAF+DoxBhippMYch9t/imf5hfRTUFRaP9f5zm+MvdDlT0VHZ6RhlQZLFHRRfucoH0xITgmGFm/GY2Us1B+ODfrU5mkXh9OzQ5NFLbX38lf5cBlaXEgPW/WHZ1AQsp8buz9NGuGK3h8ZxDGnOqxC+lCQgew3Kw=="
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGetAesByRsaPublic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="获取AES密钥解密"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aesKeyLL" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAesEncryptFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="AES密钥文件加密"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnGetAesByRsaPublic" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAesDecryptFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="AES密钥文件解密"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnAesEncryptFile" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAesDecryptFileSignVerify"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="AES密钥文件解密后RSA签名校验"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnAesEncryptFile" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/logSv"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/log"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

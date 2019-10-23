@@ -46,5 +46,14 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    <Button
+        android:id="@+id/cipherRSA"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="加密测试"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/refresh" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

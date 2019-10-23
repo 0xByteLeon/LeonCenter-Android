@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
 import com.jeremyliao.liveeventbus.LiveEventBus
+import com.leon.module_router.BusEvent
 
 private const val ACTION_INIT = "com.leon.common.app.action.INIT"
 
@@ -35,7 +36,7 @@ class InitService : IntentService("InitService") {
             .supportBroadcast(this)
             .lifecycleObserverAlwaysActive(true)
             .autoClear(false)
-        LiveEventBus.get("app_init_completed").post(System.currentTimeMillis())
+        LiveEventBus.get(BusEvent.APP_INIT_COMPLETED).post(System.currentTimeMillis())
     }
 
     companion object {

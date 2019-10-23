@@ -58,6 +58,7 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
+
         recyclerView.addItemDecoration(RecyclerViewDivider.linear().color(Color.GRAY).dividerSize(8).build())
         recyclerView.adapter = listAdapter
         recyclerView.onRetry(Runnable {
@@ -72,6 +73,10 @@ class MainActivity : BaseActivity() {
             RouterNavigationUtils.goModuleAMain()
         }
 
+        cipherRSA.onClick {
+            RouterNavigationUtils.goRSACipher()
+        }
+
         lifecycle.coroutineScope.launch {
             delay(10000)
             repeat(1000) { count ->
@@ -80,6 +85,8 @@ class MainActivity : BaseActivity() {
                 timeCount.text = "点击跳转ModuleA\n计数器：$count"
             }
         }
+
+
 //        doAsync {
 //            repeat(1000) { count ->
 //                Thread.sleep(1000)
