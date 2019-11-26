@@ -55,5 +55,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/refresh" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dialogFragmentBtn"
+        android:layout_width="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/cipherRSA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="自定义DialogFragment"
+        android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

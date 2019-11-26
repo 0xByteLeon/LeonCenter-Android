@@ -15,6 +15,7 @@ import com.leon.common.api.Resource
 import com.leon.common.api.Status
 import com.leon.common.base.BaseActivity
 import com.leon.common.extensions.*
+import com.leon.common.widgets.CommonDialogFragment
 import com.leon.module_router.BusEvent
 import com.leon.module_router.RouterNavigationUtils
 import com.leon.module_router.RouterUrls
@@ -23,6 +24,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.toast
 
 @Route(path = RouterUrls.MAIN_HOME)
 class MainActivity : BaseActivity() {
@@ -76,7 +78,6 @@ class MainActivity : BaseActivity() {
         cipherRSA.onClick {
             RouterNavigationUtils.goRSACipher()
         }
-
         lifecycle.coroutineScope.launch {
             delay(10000)
             repeat(1000) { count ->
@@ -86,7 +87,18 @@ class MainActivity : BaseActivity() {
             }
         }
 
-
+        dialogFragmentBtn.onClick {
+            CommonDialogFragment.Builder(this@MainActivity).setLayoutId(R.layout.dialog_common)
+                .addOnClickListener(R.id.cancelBtn,
+                    object : CommonDialogFragment.OnClickListener {
+                        override fun onClick(dialogFragment: CommonDialogFragment, view: View) {
+                            toast("取消")
+                            dialogFragment.dismiss()
+                        }
+                    })
+                .build()
+                .show(supportFragmentManager,"test")
+        }
 //        doAsync {
 //            repeat(1000) { count ->
 //                Thread.sleep(1000)
@@ -98,7 +110,6 @@ class MainActivity : BaseActivity() {
 //        }
     }
 
-    
     fun getWeather() {
         viewModel.getCityWeatherForecast("杭州市")
     }

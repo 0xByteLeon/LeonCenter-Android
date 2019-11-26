@@ -9,20 +9,16 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
 import com.blankj.utilcode.util.FileUtils
 import com.leon.common.base.BaseActivity
+import com.leon.common.utils.SpUtils
 import com.leon.common.utils.Uri2PathUtil
 import com.leon.module_cipher.service.FileAESCipherService
-import com.leon.module_cipher.service.FileRSACipherByBufferService
 import com.leon.module_cipher.service.FileRSACipherService
 import com.leon.module_cipher.service.RSACipherService
 import com.leon.module_router.RouterUrls
 import kotlinx.android.synthetic.main.module_cipher_activity_rsa_cipher.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.uiThread
-import java.io.File
 import java.lang.Exception
 import java.security.KeyPairGenerator
 
@@ -54,12 +50,16 @@ class RSACipherActivity : BaseActivity() {
                 ), 1000
             )
         }
+        SpUtils.defaultSpName = "test"
+
         fileRSACipherServer =
             FileRSACipherService(etPrivateKey.text.toString(), etPrivateKey.text.toString())
         rsaCipherService =
             RSACipherService(etPrivateKey.text.toString(), etPublicKey.text.toString())
 
         chooseFileBtn.onClick {
+            SpUtils.getInstance(application).put("test","ajghaughuahgiufguhgu")
+
             //            test()
             //val intent = Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
             val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -307,7 +307,6 @@ class RSACipherActivity : BaseActivity() {
             println("签名是否正确：$isSign")
             log.append("签名是否正确：$isSign")
 
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -315,3 +314,4 @@ class RSACipherActivity : BaseActivity() {
     }
 
 }
+
